@@ -28,6 +28,19 @@ class MainActivity : AppCompatActivity() {
         //add code to the button that happens when its clicked
         clickMeButton?.setOnClickListener {
             var greeting: String
+            var zulu: Boolean= zuluSwitch.isChecked
+            if (zulu) {
+                greeting= "Sawubona, ${nameTxt.text}!"
+            } else {
+                //easter egg for Sam
+                if(nameTxt.text.toString() == "Sam"||
+                    nameTxt.text.toString() == "Samatha") {
+                    greeting = "Yo,${nameTxt.text}!"
+                } else{
+                    greeting= "Greetings,${nameTxt.text}!"
+                }
+                greeting = "Welcome, ${nameTxt.text}!"
+            }
             if (zuluSwitch.isChecked) {
                 greeting = "Sawubona,${nameTxt.text}!"
             }else{
