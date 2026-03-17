@@ -11,7 +11,7 @@
         android:id="@+id/displayTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
+        android:text="welcome"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -36,8 +36,16 @@
         android:layout_marginStart="100dp"
         android:ems="10"
         android:inputType="text"
-        android:text="Name"
+        android:text="name"
         app:layout_constraintStart_toStartOf="parent"
         tools:layout_editor_absoluteY="210dp" />
+
+    <Switch
+        android:id="@+id/zuluSwitch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Zulu"
+        tools:layout_editor_absoluteX="156dp"
+        tools:layout_editor_absoluteY="310dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
