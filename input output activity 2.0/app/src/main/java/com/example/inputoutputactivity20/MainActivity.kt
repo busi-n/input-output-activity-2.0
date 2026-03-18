@@ -2,8 +2,10 @@ package com.example.inputoutputactivity20
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Spinner
 import android.widget.Switch
 import android.widget.TextView
 import android.widget.Toast
@@ -13,6 +15,19 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
 class MainActivity : AppCompatActivity() {
+
+    //enumerator to switch to different languages
+    enum class Languages {
+         ENGLISH,
+         ZULU,
+         XHOSA,
+         FRENCH,
+         SPANISH,
+         PORTUGUESE,
+         AFRIKAANS,
+         SWATI
+    }
+
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,32 +39,48 @@ class MainActivity : AppCompatActivity() {
         var displayTxt =findViewById<TextView>(R.id.displayTxt)
         val nameTxt = findViewById<EditText>(R.id.nameTxt)
         val zuluSwitch = findViewById<Switch>(R.id.zuluSwitch)
+        //set up the spinner
+        val languageSpinner= findViewById<Spinner>(R.id.languangeSpinner)
+        languageSpinner.adapter= ArrayAdapter<Languages>(this,
+            android.R.layout.simple_list_item_1, Languages.values())
+
+
 
         //add code to the button that happens when its clicked
         clickMeButton?.setOnClickListener {
-            var greeting: String
+            var greeting: String=""
+            var name = nameTxt.text.toString()
+            var language = languageSpinner.selectedItem.toString()
+            when (language) {
+                "Zulu" -> greeting = "Sawubona, ${name}!"
+                else -> greeting = "Greetings, ${name}!"
+
+            }
             var zulu: Boolean= zuluSwitch.isChecked
-            if (zulu) {
-                greeting= "Sawubona, ${nameTxt.text}!"
-            } else {
-                //easter egg for Sam
-                if(nameTxt.text.toString() == "Sam"||
-                    nameTxt.text.toString() == "Samatha") {
-                    greeting = "Yo,${nameTxt.text}!"
-                } else{
-                    greeting= "Greetings,${nameTxt.text}!"
-                }
-                greeting = "Welcome, ${nameTxt.text}!"
-            }
-            if (zuluSwitch.isChecked) {
-                greeting = "Sawubona,${nameTxt.text}!"
-            }else{
-                greeting = "Welcome,${nameTxt.text}!"
-            }
-            displayTxt.text = greeting
-           Toast.makeText(this@MainActivity,
-               "Button clicked", Toast.LENGTH_LONG).show()
-            displayTxt.text = "Welcome,${nameTxt.text}!"
+            var age: Int =20
+//            if (zulu) {
+//                greeting= "Sawubona, ${nameTxt.text}!"
+//            } else {
+//                //easter egg for Sam/Samantha
+//                if((nameTxt.text.toString() == "Sam"||
+//                    nameTxt.text.toString() == "Samatha")
+//                    && age > 20 ){
+//
+//                    greeting = "Yo,${nameTxt.text}!"
+//                } else{
+//                    greeting= "Greetings,${nameTxt.text}!"
+//                }
+//                greeting = "Welcome, ${nameTxt.text}!"
+//            }
+//            if (zuluSwitch.isChecked) {
+//                greeting = "Sawubona,${nameTxt.text}!"
+//            }else{
+//                greeting = "Welcome,${nameTxt.text}!"
+//            }
+//            displayTxt.text = greeting
+//           Toast.makeText(this@MainActivity,
+//               "Button clicked", Toast.LENGTH_LONG).show()
+//            displayTxt.text = "Welcome,${nameTxt.text}!"
 
         }
 
